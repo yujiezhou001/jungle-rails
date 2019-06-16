@@ -25,18 +25,20 @@
         </dl>
       </div>
 
-      <div class="col-sm-8">
-        <dl class="dl-horizontal">
-          <dt>Post Review</dt>
-            <dd>
-              <%= form_for [@product, @review] do |f| %>
-                <%= f.text_area :description %>
-                <%= f.select :rating, [1, 2, 3, 4, 5]%>
-                <%= submit_tag "Submit" %>
-              <%  end %>
-            </dd>
-          </dl>
-      </div>
+      <%if (current_user)%>
+        <div class="col-sm-8">
+          <dl class="dl-horizontal">
+            <dt>Post Review</dt>
+              <dd>
+                <%= form_for [@product, @review] do |f| %>
+                  <%= f.text_area :description %>
+                  <%= f.select :rating, [1, 2, 3, 4, 5]%>
+                  <%= submit_tag "Submit" %>
+                <%  end %>
+              </dd>
+            </dl>
+        </div>
+      <%end%>
 
       <div class="col-sm-8">
         <dl class="dl-horizontal">
@@ -44,8 +46,14 @@
         <% @product.reviews.reverse_each do |object| %>
           <dd>User: <%= object.user.name %></dd>
           <dd>Content: <%= object.description %></dd>
-          <dd>Ratings: <%= object.rating %></dd>
-          
+          <dd>Ratings:
+          <% object.rating.times do  %>
+          <span class="glyphicon glyphicon-star" style=color:#F3D162></span>
+          <% end %>
+          </dd>
+          <%if current_user.name == object.user.name%>
+          <dd><span><%=link_to fa_icon('trash'), product_review_path(@product.id, object.id), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" }%></span></dd>
+          <%end%>
           <br>
           <% end %>
         </dl>
