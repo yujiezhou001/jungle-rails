@@ -22,6 +22,12 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
+          <dt>Overall Ratings</dt>
+          <dd>
+          <% @product.reviews.average(:rating).to_i.times do %>
+          <span class="glyphicon glyphicon-star" style=color:#F3D162></span>
+          <% end %>
+          </dd>
         </dl>
       </div>
 
@@ -51,7 +57,7 @@
           <span class="glyphicon glyphicon-star" style=color:#F3D162></span>
           <% end %>
           </dd>
-          <%if current_user.name == object.user.name%>
+          <%if current_user && current_user.name == object.user.name%>
           <dd><span><%=link_to fa_icon('trash'), product_review_path(@product.id, object.id), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" }%></span></dd>
           <%end%>
           <br>
