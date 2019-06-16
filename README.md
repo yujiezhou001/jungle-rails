@@ -10,7 +10,9 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 !["Screenshot of Cart_Page"](docs/cart.png)
 !["Screenshot of Stripe_Page"](docs/stripe.png)
 !["Screenshot of Confirmation"](docs/confirmation.png)
-!["Screenshot of Admin"](docs/admin.png)
+!["Screenshot of Admin_Authentification"](docs/admin.png)
+!["Screenshot of Admin_Page"](docs/admin1.png)
+
 
 ## Setup
 
