@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-  require 'rails_helper'
-
-RSpec.describe Product, type: :model do
     let(:name) {'Laptop'}
     let(:price_cents) {600}
     let(:quantity) {10}
@@ -12,7 +9,6 @@ RSpec.describe Product, type: :model do
 
   context 'when all the proper attributes are provided' do
     it 'is valid' do
-      product.valid?
       expect(product).to be_valid
     end
   end
